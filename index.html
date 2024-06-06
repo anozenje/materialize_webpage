@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{user.name}}'s Profile</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="simple-grid.css">
+    <style>
+        .row .col.s4 h4 {
+            margin-bottom: 0;
+        }
+
+        .row .col.s4 .row {
+            display: flex;
+            align-items: center;
+        }
+
+        .row .col.s4 .row .col.s6 {
+            padding-right: 10px;
+        }
+
+        .row .col.s4 img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 600px) {
+            .col.s6:nth-child(odd) {
+                order: 1;
+            }
+
+            .col.s6:nth-child(even) {
+                order: 2;
+            }
+
+            .historical-places .row .col.s4:nth-child(odd) {
+                order: 2;
+            }
+
+            .historical-places .row .col.s4:nth-child(even) {
+                order: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <script id="profile-template" type="text/x-handlebars-template">
+        <div class="container">
+            <div class="row">
+                <div class="col s8">
+                    <h1>{{user.name}}</h1>
+                </div>
+                <div class="col s2">
+                    <img src="{{user.image}}">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s6">
+                    <h3 class="seoul">Seoul</h3>
+                    <img src="{{city.Seoul.image}}">
+                </div>
+                <div class="col s6">
+                    <p>{{city.Seoul.description}}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <h3 class="foreignLang">Korean</h3>
+                    <p>As a k-drama binge watcher, learning Korean for better understanding comes with understanding the dialogue
+                        and refraining from reading the subtitles. Learning Korean will help me connect more deeply with the
+                        characters. This will also enhance my overall enjoyment of K-dramas , as I can pick up the subtle jokes. As
+                        a TEFL certificate holder , exploring the culture can open up new possibilities for me.</p>
+                    <table class="striped">
+                        <thead>
+                            <tr>
+                                <th>English</th>
+                                <th>Korean</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each fav_language.phrases}}
+                            <tr>
+                                <td>{{this.English}}</td>
+                                <td>{{this.Korean}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <h3>BA in International Relations - University Of Venda</h3>
+                <h3 class="txt">Favorite Subjects</h3>
+                {{#each education.favorite_subjects}}
+                <div class="col s4">
+                    <h4>{{this.name}}</h4>
+                    <img src="{{this.image}}">
+                </div>
+                {{/each}}
+            </div>
+
+            <div class="row historical-places">
+                <h3 class="place">Historical Places</h3>
+                {{#each historical_places}}
+                <div class="col s4">
+                    <h4>{{this.name}}</h4>
+                    <div class="row">
+                        <div class="col s6">
+                            <p>{{this.description}}</p>
+                        </div>
+                        <div class="col s6">
+                            <img src="{{this.image}}">
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+
+        </div>
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const source = document.getElementById('profile-template').innerHTML;
+                const template = Handlebars.compile(source);
+                document.body.innerHTML += template(data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+
+</html>
