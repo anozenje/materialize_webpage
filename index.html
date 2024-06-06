@@ -9,6 +9,60 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="simple-grid.css">
     <style>
+        body {
+            background-color: #f7e3e3;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #ff69b4;
+        }
+
+        p {
+            color: #333;
+        }
+
+        .row {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #ff69b4;
+            color: #fff;
+        }
+
+        .btn:hover {
+            background-color: #ff1493;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: calc(100% - 22px);
+        }
+
+        input[type="submit"] {
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ff1493;
+        }
+
         .row .col.s4 h4 {
             margin-bottom: 0;
         }
@@ -27,21 +81,96 @@
             height: auto;
         }
 
+        .pink-border {
+            border: 2px solid #ff69b4;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .pink-bg {
+            background-color: #ffebff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .pink-text {
+            color: #ff69b4;
+        }
+
+        .pink-bg-img {
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            height: auto;
+        }
+
         @media (max-width: 600px) {
-            .col.s6:nth-child(odd) {
+            h1, h2, h3, h4, h5, h6 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .row .col.s8,
+            .row .col.s2 {
+                width: 100%;
+            }
+
+            .row .col.s2 {
                 order: 1;
             }
 
-            .col.s6:nth-child(even) {
+            .row .col.s8 {
                 order: 2;
             }
 
-            .historical-places .row .col.s4:nth-child(odd) {
-                order: 2;
+            .row .col.s4 {
+                width: 100%;
+                order: unset;
             }
 
+            .row .col.s4 .row .col.s6 {
+                padding-right: 0;
+            }
+
+            .btn,
+            input[type="submit"] {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            textarea {
+                width: calc(100% - 22px);
+            }
+
+            /* Adjust historical places layout for small screens */
+            .historical-places .row .col.s4 {
+                width: 100%;
+            }
             .historical-places .row .col.s4:nth-child(even) {
-                order: 1;
+                flex-direction: row-reverse; /* Reverse order for even rows */
+            }
+
+            /* Swap image and description on small screens for historical places */
+            .historical-places .row .col.s4:nth-child(odd) .row {
+                display: flex;
+                flex-direction: column-reverse; /* Reverse order for odd rows */
+            }
+            .historical-places .row .col.s4:nth-child(odd) .row .col.s12.m6:first-child {
+                order: 2; /* Description first on odd rows */
+            }
+            .historical-places .row .col.s4:nth-child(odd) .row .col.s12.m6:last-child {
+                order: 1; /* Image second on odd rows */
             }
         }
     </style>
@@ -50,29 +179,29 @@
 <body>
 
     <script id="profile-template" type="text/x-handlebars-template">
-        <div class="container">
+        <div class="container pink-bg">
             <div class="row">
                 <div class="col s8">
                     <h1>{{user.name}}</h1>
                 </div>
-                <div class="col s2">
-                    <img src="{{user.image}}">
+                <div class="col s2 l4">
+                    <img class="pink-bg-img" src="{{user.image}}">
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col s6">
-                    <h3 class="seoul">Seoul</h3>
-                    <img src="{{city.Seoul.image}}">
+            <div class="row pink-border">
+                <div class="col s8">
+                    <h3 class="pink-text">Seoul</h3>
+                    <img class="pink-bg-img" src="{{city.Seoul.image}}">
                 </div>
-                <div class="col s6">
+                <div class=" big-screen s6 seoul-description">
                     <p>{{city.Seoul.description}}</p>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row pink-border">
                 <div class="col s12">
-                    <h3 class="foreignLang">Korean</h3>
+                    <h3 class="pink-text">Korean</h3>
                     <p>As a k-drama binge watcher, learning Korean for better understanding comes with understanding the dialogue
                         and refraining from reading the subtitles. Learning Korean will help me connect more deeply with the
                         characters. This will also enhance my overall enjoyment of K-dramas , as I can pick up the subtle jokes. As
@@ -96,34 +225,33 @@
                 </div>
             </div>
 
-            <div class="row">
-                <h3>BA in International Relations - University Of Venda</h3>
-                <h3 class="txt">Favorite Subjects</h3>
+            <div class="row pink-border">
+                <h3 class="pink-text">BA in International Relations - University Of Venda</h3>
+                <h3 class="pink-text">Favorite Subjects</h3>
                 {{#each education.favorite_subjects}}
                 <div class="col s4">
                     <h4>{{this.name}}</h4>
-                    <img src="{{this.image}}">
+                    <img class="pink-bg-img" src="{{this.image}}">
                 </div>
                 {{/each}}
             </div>
 
-            <div class="row historical-places">
-                <h3 class="place">Historical Places</h3>
+            <div class="row pink-border historical-places">
+                <h3 class="pink-text">Historical Places</h3>
                 {{#each historical_places}}
                 <div class="col s4">
                     <h4>{{this.name}}</h4>
                     <div class="row">
-                        <div class="col s6">
+                        <div class="col s12 m6">
                             <p>{{this.description}}</p>
                         </div>
-                        <div class="col s6">
-                            <img src="{{this.image}}">
+                        <div class="col s12 m6">
+                            <img class="pink-bg-img" src="{{this.image}}">
                         </div>
                     </div>
                 </div>
                 {{/each}}
             </div>
-
         </div>
     </script>
 

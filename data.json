@@ -28,7 +28,10 @@
       {
           "name": "Botanical Garden Walter Sisulu",
           "description": "Walter Sisulu Botanical Garden is a home to more than 600 plant species, has the most beautiful waterfall for pictures and was renamed after Walter Sisulu.",
-          "image": "walter.jpg"
+          "image": "walter.jpg",
+          "position": "photo",
+          "ClassNameImg": "pull-s4",
+          "ClassNameText": "push-s4"
       },
       {
           "name": "Orlando Towers",
