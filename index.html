@@ -153,26 +153,50 @@
                 width: calc(100% - 22px);
             }
 
-            /* Adjust historical places layout for small screens */
-            .historical-places .row .col.s4 {
-                width: 100%;
-            }
-            .historical-places .row .col.s4:nth-child(even) {
-                flex-direction: row-reverse; /* Reverse order for even rows */
-            }
+            @media screen and (max-width: 992px) {
+    .historical-places .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-            /* Swap image and description on small screens for historical places */
-            .historical-places .row .col.s4:nth-child(odd) .row {
-                display: flex;
-                flex-direction: column-reverse; /* Reverse order for odd rows */
-            }
-            .historical-places .row .col.s4:nth-child(odd) .row .col.s12.m6:first-child {
-                order: 2; /* Description first on odd rows */
-            }
-            .historical-places .row .col.s4:nth-child(odd) .row .col.s12.m6:last-child {
-                order: 1; /* Image second on odd rows */
-            }
-        }
+    .historical-places .col {
+        flex: 1;
+    }
+
+    .historical-places .col.s4 {
+        flex-basis: 33.33%;
+    }
+
+   
+    .historical-places .col.s4:nth-child(2) .col.s12.m6:first-child {
+        order: 1;
+    }
+
+   
+    .historical-places .col.s4:nth-child(2) .col.s12.m6:last-child {
+        order: 1;
+    }
+
+    
+    .historical-places .col.s4:nth-child(3) .col.s12.m6:first-child {
+        order: 2; 
+    }
+
+ 
+    .historical-places .col.s4:nth-child(3) .col.s12.m6:last-child {
+        order: 1; 
+    }
+
+    .historical-places .col.s6 img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+}
+
+
+        
     </style>
 </head>
 
