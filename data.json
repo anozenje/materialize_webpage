@@ -1,11 +1,11 @@
 {
   "user": {
       "name": "Anozenje Michelle Kamanga",
-      "image": "nozi.jpg"
+      "image": "./nozi.jpg"
   },
   "city": {
       "Seoul": {
-          "image": "seoul.jpg",
+          "image": "./seoul.jpg",
           "description": "Seoul offers a wealth of cultural attractions, from historic palaces and temples to modern art museums and galleries. Seoul is a food lover's paradise, with a diverse range of traditional cuisine and the best city for shopaholics. Seoul is home to top-ranked universities and international schools. Seoul is considered one of the safest cities in the world. Seoul has a well-developed healthcare system with modern hospitals and medical facilities. Seoul offers a unique and exciting lifestyle that combines traditional culture with modern amenities and opportunities."
       }
   },
@@ -15,20 +15,25 @@
           { "English": "How are you?", "Korean": "Annyeonghaseyo?" },
           { "English": "Thank you", "Korean": "Gomawo" },
           { "English": "Do not do it", "Korean": "Hajima" }
-      ]
-  },
+      ],
+      "description":"As a k-drama binge watcher, learning Korean for better understanding comes with understanding the dialogue and refraining from reading the subtitles. Learning Korean will help me connect more deeply with the characters. This will also enhance my overall enjoyment of K-dramas , as I can pick up the subtle jokes. As a TEFL certificate holder , exploring the culture can open up new possibilities for me.",
+      "title":"KOREAN",
+      "name":"Seoul",
+      "eng":"ENGLISH",
+      "ko":"KOREAN"
+    },
   "education": {
       "favorite_subjects": [
-          { "name": "ECONOMICS FOR BADMIN", "image": "eco.jpg" },
-          { "name": "CONFLICT AND COOPERATION", "image": "itr.jpg" },
-          { "name": "AFRICA AND THE WORLD", "image": "africa.png" }
+          { "name": "ECONOMICS FOR BADMIN", "image": "./eco.jpg" },
+          { "name": "CONFLICT AND COOPERATION", "image": "./itr.jpg" },
+          { "name": "AFRICA AND THE WORLD", "image": "./africa.png" }
       ]
   },
   "historical_places": [
       {
           "name": "Botanical Garden Walter Sisulu",
           "description": "Walter Sisulu Botanical Garden is a home to more than 600 plant species, has the most beautiful waterfall for pictures and was renamed after Walter Sisulu.",
-          "image": "walter.jpg",
+          "image": "./walter.jpg",
           "position": "photo",
           "ClassNameImg": "pull-s4",
           "ClassNameText": "push-s4"
@@ -36,12 +41,12 @@
       {
           "name": "Orlando Towers",
           "description": "Orlando Towers is located in one of the largest townships in South Africa, the most popular tourist attraction, and is used for bungee jumping.",
-          "image": "orlando.jpg"
+          "image": "./orlando.jpg"
       },
       {
           "name": "Johannesburg Art Gallery",
           "description": "The Joburg Art Gallery is the largest gallery in Africa. The building was designed by a British architect, Sir Edwin Lutyens, and the gallery houses works by artists such as Pablo Picasso.",
-          "image": "art.jpg"
+          "image": "./art.jpg"
       }
   ]
 }

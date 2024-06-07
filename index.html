@@ -202,7 +202,7 @@
 
 <body>
 
-    <script id="profile-template" type="text/x-handlebars-template">
+    
         <div class="container pink-bg">
             <div class="row">
                 <div class="col s8">
@@ -215,7 +215,7 @@
 
             <div class="row pink-border">
                 <div class="col s8">
-                    <h3 class="pink-text">Seoul</h3>
+                    <h3 class="pink-text">{{fav_language.name}}</h3>
                     <img class="pink-bg-img" src="{{city.Seoul.image}}">
                 </div>
                 <div class=" big-screen s6 seoul-description">
@@ -225,16 +225,13 @@
 
             <div class="row pink-border">
                 <div class="col s12">
-                    <h3 class="pink-text">Korean</h3>
-                    <p>As a k-drama binge watcher, learning Korean for better understanding comes with understanding the dialogue
-                        and refraining from reading the subtitles. Learning Korean will help me connect more deeply with the
-                        characters. This will also enhance my overall enjoyment of K-dramas , as I can pick up the subtle jokes. As
-                        a TEFL certificate holder , exploring the culture can open up new possibilities for me.</p>
+                    <h3 class="pink-text">{{fav_language.title}}</h3>
+                    <p>{{fav_language.description}}/p>
                     <table class="striped">
                         <thead>
                             <tr>
-                                <th>English</th>
-                                <th>Korean</th>
+                                <th>fav_language.eng</th>
+                                <th>fav_language.ko</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -277,20 +274,10 @@
                 {{/each}}
             </div>
         </div>
-    </script>
+    
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                const source = document.getElementById('profile-template').innerHTML;
-                const template = Handlebars.compile(source);
-                document.body.innerHTML += template(data);
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    </script>
+    
+   
 </body>
 
 </html>
